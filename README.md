@@ -1,73 +1,70 @@
-# React + TypeScript + Vite
+# FCU Builder
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+FCU Builder is a JSON-driven firearm configuration app for exploring compatible builds by FCU family.
 
-Currently, two official plugins are available:
+The app currently includes:
+- SIG P365 family
+- Ruger RXM family
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Compatibility is driven from schema JSON files (source of truth), and the UI enforces a guided selection flow.
 
-## React Compiler
+## What the app does
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- Select an FCU family first.
+- Select parts in dependency order:
+  1. Grip module
+  2. Slide
+  3. Barrel
+  4. Magazine
+  5. Optional compensator
+- Disable incompatible options at selection time.
+- Show build compatibility status and current selected build card.
+- Provide one-click presets for common configurations.
 
-## Expanding the ESLint configuration
+## Source of truth
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+Compatibility data lives in:
+- `src/data/fcu_schemas/p365.json`
+- `src/data/fcu_schemas/rxm.json`
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+The TypeScript logic converts these schemas into runtime parts and applies generic validation using schema-defined compatibility pairs.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## Getting started
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### Prerequisites
+- Node.js 20+ recommended
+- npm
+
+### Install dependencies
+
+```bash
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Run locally
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm run dev
 ```
+
+Then open the local URL shown by Vite (typically `http://localhost:5173`).
+
+## How to use
+
+1. Choose an FCU family.
+2. Pick a grip module.
+3. Pick a slide (options are filtered/disabled based on prior choices).
+4. Pick a barrel.
+5. Pick a magazine.
+6. Optionally pick a compensator.
+7. Use presets at the top for quick loading of known builds.
+
+If a selection would produce an invalid combination, the option is disabled and shows the reason.
+
+## Scripts
+
+- `npm run dev` - start development server
+- `npm run test` - run unit tests (Vitest)
+- `npm run lint` - run ESLint
+- `npm run build` - type-check and build production bundle
+- `npm run preview` - preview production build
