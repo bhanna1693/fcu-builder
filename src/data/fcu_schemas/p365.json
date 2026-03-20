@@ -1,0 +1,185 @@
+{
+  "platform": "SIG_P365",
+  "components": {
+    "slides": [
+      {
+        "id": "sl_365_std",
+        "name": "P365 Standard",
+        "length": 3.1,
+        "compatible_barrels": [
+          "br_31"
+        ],
+        "optic_footprint": "rmsc_shield",
+        "compatible_grips": [
+          "gr_x",
+          "gr_xl",
+          "gr_macro",
+          "gr_fuse"
+        ],
+        "notes": "Standard 3.1-inch slide configuration."
+      },
+      {
+        "id": "sl_365_xl",
+        "name": "P365-XL",
+        "length": 3.7,
+        "compatible_barrels": [
+          "br_37"
+        ],
+        "optic_footprint": "rmsc_shield",
+        "compatible_grips": [
+          "gr_x",
+          "gr_xl",
+          "gr_macro",
+          "gr_fuse"
+        ],
+        "notes": "Full 3.7-inch rifling; standard on XL and Macro Tacops models."
+      },
+      {
+        "id": "sl_365_xl_comp",
+        "name": "P365-XL Comp",
+        "length": 3.7,
+        "compatible_barrels": [
+          "br_31"
+        ],
+        "optic_footprint": "rmsc_shield",
+        "compatible_grips": [
+          "gr_x",
+          "gr_xl",
+          "gr_macro",
+          "gr_fuse"
+        ],
+        "notes": "Uses an XL-length slide but requires a 3.1-inch barrel to allow for the integrated expansion chamber."
+      },
+      {
+        "id": "sl_365_fuse",
+        "name": "P365-Fuse",
+        "length": 4.3,
+        "compatible_barrels": [
+          "br_43"
+        ],
+        "optic_footprint": "rmsc_shield",
+        "compatible_grips": [
+          "gr_macro",
+          "gr_fuse"
+        ],
+        "notes": "Longest factory slide; requires dedicated 4.3-inch barrel and guide rod."
+      }
+    ],
+    "barrels": [
+      {
+        "id": "br_31",
+        "name": "3.1-inch Barrel",
+        "length": 3.1,
+        "compatible_slides": [
+          "sl_365_std",
+          "sl_365_xl_comp"
+        ],
+        "threaded": false
+      },
+      {
+        "id": "br_37",
+        "name": "3.7-inch Barrel",
+        "length": 3.7,
+        "compatible_slides": [
+          "sl_365_xl"
+        ],
+        "threaded": false
+      },
+      {
+        "id": "br_43",
+        "name": "4.3-inch Barrel",
+        "length": 4.3,
+        "compatible_slides": [
+          "sl_365_fuse"
+        ],
+        "threaded": false
+      }
+    ],
+    "grip_modules": [
+      {
+        "id": "gr_x",
+        "name": "Standard Micro Grip",
+        "rail_type": "sig_proprietary",
+        "flush_mag_cap": 10,
+        "compatible_mags": [
+          "mg_10",
+          "mg_12",
+          "mg_17",
+          "mg_21"
+        ]
+      },
+      {
+        "id": "gr_xl",
+        "name": "XL / X-Series Grip",
+        "rail_type": "sig_proprietary",
+        "flush_mag_cap": 12,
+        "compatible_mags": [
+          "mg_12",
+          "mg_17",
+          "mg_21"
+        ]
+      },
+      {
+        "id": "gr_macro",
+        "name": "X-Macro Grip",
+        "rail_type": "m1913_picatinny",
+        "flush_mag_cap": 17,
+        "compatible_mags": [
+          "mg_17",
+          "mg_21"
+        ]
+      },
+      {
+        "id": "gr_fuse",
+        "name": "Fuse LXG Grip",
+        "rail_type": "m1913_picatinny",
+        "flush_mag_cap": 17,
+        "compatible_mags": [
+          "mg_17",
+          "mg_21"
+        ]
+      }
+    ],
+    "magazines": [
+      {
+        "id": "mg_10",
+        "capacity": 10,
+        "compatible_grips": [
+          "gr_x"
+        ],
+        "notes": "Will not seat in XL or Macro grips."
+      },
+      {
+        "id": "mg_12",
+        "capacity": 12,
+        "compatible_grips": [
+          "gr_x",
+          "gr_xl"
+        ],
+        "notes": "Flush in XL; extended in Micro. Will not seat in Macro."
+      },
+      {
+        "id": "mg_17",
+        "capacity": 17,
+        "compatible_grips": [
+          "gr_x",
+          "gr_xl",
+          "gr_macro",
+          "gr_fuse"
+        ],
+        "notes": "Flush in Macro; extended in others. Requires baseplate sleeves for Micro/XL."
+      },
+      {
+        "id": "mg_21",
+        "capacity": 21,
+        "compatible_grips": [
+          "gr_x",
+          "gr_xl",
+          "gr_macro",
+          "gr_fuse"
+        ],
+        "notes": "Extended in all grip modules."
+      }
+    ]
+  }
+}
